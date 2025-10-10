@@ -2,12 +2,9 @@ const addBookBtn = document.querySelector('#addBookBtn');
 const toggleReadBtn = document.querySelector('#toggleReadBtn');
 const removeBookBtn = document.querySelector('#removeBookBtn');
 const books = document.querySelector('.books');
+const dialog = document.querySelector('#addBookDialog')
 
 const library = [];
-
-const thor = new Book("Test Test", "Thor", "169")
-
-addBookToLibrary(thor);
 
 function Book(title, author, pages) {
     if (!new.target) {
@@ -40,6 +37,10 @@ function removeBookFromLibrary(bookId) {
         library.splice(index, 1);
     }
 }
+
+addBookBtn.addEventListener('click', () => {
+    dialog.showModal();
+})
 
 function createBookCard(book) {
     const newBookCard = document.createElement('div');
