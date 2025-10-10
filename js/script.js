@@ -3,23 +3,28 @@ const toggleReadBtn = document.querySelector('#toggleReadBtn');
 const removeBookBtn = document.querySelector('#removeBookBtn');
 const books = document.querySelector('.books');
 
+const library = [];
+
+const thor = new Book("Test Test", "Thor", "169")
+
+addBookToLibrary(thor);
+
 function Book(title, author, pages) {
     if (!new.target) {
         throw new Error("Book constructor must be called with 'new'");
     }
 
-    id: crypto.randomUUID();
-    title: this.title;
-    author: this.author;
-    pages: this.pages;
-    readStatus: false;
+    id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus = false;
 }
 
 Book.prototype.toggleReadStatus = function () {
     this.readStatus = !this.readStatus;
 };
 
-const library = [];
 
 function addBookToLibrary(book) {
     if (!(book instanceof Book)) {
@@ -43,12 +48,12 @@ function createBookCard(book) {
 
     const newTitle = document.createElement('h2');
     newTitle.className = 'book-title';
-    newTitle.textContent = book.title;
+    newTitle.textContent = `${book.title}`;
     newBookCard.appendChild(newTitle);
 
     const newAuthor = document.createElement('p');
     newAuthor.className = 'book-author';
-    newAuthor.textContent = book.author;
+    newAuthor.textContent = `${book.author}`;
     newBookCard.appendChild(newAuthor);
 
     const newPages = document.createElement('p');
@@ -62,15 +67,17 @@ function createBookCard(book) {
 
     const newToggleReadBtn = document.createElement('button');
     newToggleReadBtn.id = 'toggleReadBtn';
+    newToggleReadBtn.setAttribute('status', (book.readStatus ? "read" : "not-read"))
     newToggleReadBtn.addEventListener('click', () => {
         book.toggleReadStatus();
         newToggleReadBtn.textContent = book.readStatus ? 'Read' : 'Not Read';
+        newToggleReadBtn.setAttribute('status', (book.readStatus ? "read" : "not-read"))
     });
     newBookActions.appendChild(newToggleReadBtn);
 
     const newToggleReadIcon = document.createElement('div');
     newToggleReadIcon.className = 'read-icon';
-    newToggleReadIcon.appendChild(newToggleReadBtn);
+    newToggleReadBtn.appendChild(newToggleReadIcon);
 
     const newReadIconSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     newReadIconSvg.setAttribute("viewBox", "0 0 24 24");
@@ -86,16 +93,15 @@ function createBookCard(book) {
 
     const newToggleReadText = document.createElement('span');
     newToggleReadText.textContent = book.readStatus ? 'Read' : 'Not Read';
-    newToggleReadBtn.appendChild(newtoggleReadText);
+    newToggleReadBtn.appendChild(newToggleReadText);
 
     const newRemoveBookBtn = document.createElement('button');
     newRemoveBookBtn.id = 'removeBookBtn';
-    newRemoveBookBtn.textContent = 'Remove';
     newRemoveBookBtn.addEventListener('click', () => {
         removeBookFromLibrary(book.id);
-        books.removeChild(bookCard);
+        books.removeChild(newBookCard);
     })
-    newBookActions.appendChild(newRemoveBtn);
+    newBookActions.appendChild(newRemoveBookBtn);
 
     const newRemoveBookIcon = document.createElement('div');
     newRemoveBookIcon.className = "remove-icon";
@@ -117,3 +123,9 @@ function createBookCard(book) {
     newRemoveBookText.textContent = "Remove"
     newRemoveBookBtn.appendChild(newRemoveBookText);
 }
+
+addEventListener('DOMContentLoaded', () => {
+    for (const book of library) {
+        createBookCard(book);
+    }
+})
