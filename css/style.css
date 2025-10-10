@@ -185,6 +185,13 @@ body {
     gap: 0.25rem;
 }
 
+#addBookForm>.form-error {
+    display: none;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    background-color: hsl(0, 68%, 74%);
+}
+
 #addBookForm input[type="text"] {
     border: 2px solid rgba(0, 0, 0, 0.8);
     border-radius: 0.5rem;

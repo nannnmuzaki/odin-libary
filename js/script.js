@@ -2,7 +2,12 @@ const addBookBtn = document.querySelector('#addBookBtn');
 const toggleReadBtn = document.querySelector('#toggleReadBtn');
 const removeBookBtn = document.querySelector('#removeBookBtn');
 const books = document.querySelector('.books');
-const dialog = document.querySelector('#addBookDialog')
+const dialog = document.querySelector('#addBookDialog');
+const addBookForm = document.querySelector('#addBookForm');
+const formError = document.querySelector('.form-error');
+const bookTitle = document.querySelector('#bookTitle');
+const bookAuthor = document.querySelector('#bookAuthor');
+const bookPages = document.querySelector('#bookPages');
 
 const library = [];
 
@@ -29,6 +34,7 @@ function addBookToLibrary(book) {
     }
 
     library.push(book);
+    createBookCard(book);
 }
 
 function removeBookFromLibrary(bookId) {
@@ -39,7 +45,24 @@ function removeBookFromLibrary(bookId) {
 }
 
 addBookBtn.addEventListener('click', () => {
+    formError.style.display = 'none';
     dialog.showModal();
+})
+
+addBookForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    if (bookTitle.value === "" || bookAuthor.value === "" || bookPages.value === "") {
+        formError.style.display = 'block';
+        return;
+    }
+
+    const book = new Book(bookTitle.value, bookAuthor.value, bookPages.value)
+
+    addBookToLibrary(book);
+
+    addBookForm.reset();
+    dialog.close();
 })
 
 function createBookCard(book) {
