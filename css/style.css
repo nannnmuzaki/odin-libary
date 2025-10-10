@@ -12,8 +12,140 @@
 
 body {
     background-color: #ffffff;
-    color: rgba(0, 0, 0, 0.9);
+    color: rgba(0, 0, 0, 0.8);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     min-height: 100vh;
+}
+
+.header {
+    background-color: hsl(214, 33%, 94%);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky;
+}
+
+.header h1 {
+    color: rgba(0, 0, 0, 0.7);
+    font-variation-settings: 'wght' 300;
+}
+
+#addBookBtn {
+    background-color: hsl(206, 68%, 84%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.plus-icon {
+    height: 18px;
+}
+
+.plus-icon svg {
+    fill: rgba(0, 0, 0, 0.7);
+    height: 100%;
+}
+
+#addBookBtn:hover {
+    background-color: hsl(206, 68%, 74%);
+}
+
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.book-card {
+    background-color: hsl(214, 33%, 94%);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border-radius: 1rem;
+}
+
+.book-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.book-author,
+.book-pages {
+    margin-top: 0.25rem;
+    font-size: 14px;
+    font-variation-settings: 'wght' 500;
+}
+
+.book-actions {
+    margin-top: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#toggleReadBtn,
+#removeBookBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.read-icon,
+.remove-icon {
+    height: 16px;
+}
+
+.read-icon>svg,
+.remove-icon>svg {
+    fill: rgba(0, 0, 0, 0.7);
+    height: 100%;
+}
+
+#toggleReadBtn:hover,
+#removeBookBtn:hover {
+    background-color: hsl(107, 68%, 74%);
+}
+
+#toggleReadBtn[status="read"] {
+    background-color: hsl(107, 68%, 84%);
+}
+
+#toggleReadBtn[status="read"]:hover {
+    background-color: hsl(107, 68%, 74%);
+}
+
+#toggleReadBtn[status="not-read"] {
+    background-color: hsl(0, 0%, 80%);
+}
+
+#toggleReadBtn[status="not-read"]:hover {
+    background-color: hsl(0, 0%, 70%);
+}
+
+#removeBookBtn {
+    background-color: hsl(0, 68%, 84%);
+}
+
+#removeBookBtn:hover {
+    background-color: hsl(0, 68%, 74%);
 }
