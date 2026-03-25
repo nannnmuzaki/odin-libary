@@ -1,48 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Odin: Library</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odin: Library</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <body>
+        <div class="header">
+            <h1>Odin Library</h1>
+            <button id="addBookBtn">
+                <div class="plus-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <title>plus</title>
+                        <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                    </svg>
+                </div>
+                <span>Book</span>
+            </button>
+        </div>
+        <div class="books"></div>
 
-<body>
-    <div class="header">
-        <h1>Odin Library</h1>
-        <button id="addBookBtn">
-            <div class="plus-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <title>plus</title>
-                    <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-                </svg>
-            </div>
-            <span>Book</span>
-        </button>
-    </div>
-    <div class="books"></div>
+        <dialog id="addBookDialog" closedby="any">
+            <form id="addBookForm" novalidate>
+                <span class="form-error">Please Fill out the Form!</span>
+                <p>
+                    <label for="bookTitle">Title</label>
+                    <input
+                        type="text"
+                        name="bookTitle"
+                        id="bookTitle"
+                        required
+                    />
+                </p>
+                <p>
+                    <label for="bookAuthor">Author</label>
+                    <input
+                        type="text"
+                        name="bookAuthor"
+                        id="bookAuthor"
+                        required
+                    />
+                </p>
+                <p>
+                    <label for="bookPages">Total Pages</label>
+                    <input
+                        type="number"
+                        name="bookPages"
+                        id="bookPages"
+                        min="1"
+                        required
+                    />
+                </p>
+                <button type="submit">Add Book</button>
+            </form>
+        </dialog>
 
-    <dialog id="addBookDialog" closedby="any">
-        <form id="addBookForm">
-            <span class="form-error">Please Fill out the Form!</span>
-            <p>
-                <label for="bookTitle">Title</label>
-                <input type="text" name="bookTitle" id="bookTitle">
-            </p>
-            <p>
-                <label for="bookAuthor">Author</label>
-                <input type="text" name="bookAuthor" id="bookAuthor">
-            </p>
-            <p>
-                <label for="bookPages">Total Pages</label>
-                <input type="text" name="bookPages" id="bookPages">
-            </p>
-            <button type="submit">Add Book</button>
-        </form>
-    </dialog>
-
-    <script src="js/script.js" defer></script>
-</body>
-
+        <script src="js/script.js" defer></script>
+    </body>
 </html>

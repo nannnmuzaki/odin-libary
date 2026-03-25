@@ -105,22 +105,57 @@ addBookBtn.addEventListener("click", () => {
     dialog.showModal();
 });
 
+bookTitle.addEventListener("input", () => {
+    if (bookTitle.validity.valueMissing) {
+        bookTitle.setCustomValidity("Book Title is required");
+    } else {
+        bookTitle.setCustomValidity("");
+    }
+});
+
+bookAuthor.addEventListener("input", () => {
+    if (bookAuthor.validity.valueMissing) {
+        bookAuthor.setCustomValidity("Book Author is required");
+    } else {
+        bookAuthor.setCustomValidity("");
+    }
+});
+
+bookPages.addEventListener("input", () => {
+    if (bookPages.validity.valueMissing) {
+        bookPages.setCustomValidity("Book Pages is required");
+    } else if (bookPages.validity.rangeUnderflow) {
+        bookPages.setCustomValidity("Book Pages should be 1 or more pages");
+    } else {
+        bookPages.setCustomValidity("");
+    }
+});
+
 addBookForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    try {
-        const book = new Book(
-            bookTitle.value,
-            bookAuthor.value,
-            parseInt(bookPages.value),
-        );
-        createBookCard(book);
-        addBookForm.reset();
-        dialog.close();
-    } catch (error) {
-        formError.textContent = error.message;
-        formError.style.display = "block";
+    if (addBookForm.reportValidity()) {
+        try {
+            const book = new Book(
+                bookTitle.value,
+                bookAuthor.value,
+                parseInt(bookPages.value),
+            );
+            createBookCard(book);
+            addBookForm.reset();
+            dialog.close();
+        } catch (error) {
+            formError.textContent = error.message;
+            formError.style.display = "block";
+        }
+    } else {
+        return;
     }
+});
+
+dialog.addEventListener("close", () => {
+    addBookForm.reset();
+    formError.style.display = "none";
+    formError.textContent = "";
 });
 
 function createBookCard(book) {
