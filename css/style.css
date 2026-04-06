@@ -1,13 +1,25 @@
 @font-face {
-    font-family: 'Inter';
-    src: url('../fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+    font-family: "Inter";
+    src: url("../fonts/Inter-VariableFont_opsz\,wght.ttf") format("truetype");
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:
+        "Inter",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 body {
@@ -29,7 +41,7 @@ body {
 
 .header h1 {
     color: rgba(0, 0, 0, 0.7);
-    font-variation-settings: 'wght' 300;
+    font-variation-settings: "wght" 300;
 }
 
 #addBookBtn {
@@ -87,7 +99,7 @@ body {
 .book-pages {
     margin-top: 0.25rem;
     font-size: 14px;
-    font-variation-settings: 'wght' 500;
+    font-variation-settings: "wght" 500;
 }
 
 .book-actions {
@@ -117,8 +129,8 @@ body {
     height: 16px;
 }
 
-.read-icon>svg,
-.remove-icon>svg {
+.read-icon > svg,
+.remove-icon > svg {
     fill: rgba(0, 0, 0, 0.7);
     height: 100%;
 }
@@ -178,21 +190,22 @@ body {
     padding: 2rem 1.5rem;
 }
 
-#addBookForm>p {
+#addBookForm > p {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0.25rem;
 }
 
-#addBookForm>.form-error {
+#addBookForm > .form-error {
     display: none;
     padding: 1rem 1.5rem;
     border-radius: 1rem;
     background-color: hsl(0, 68%, 74%);
 }
 
-#addBookForm input[type="text"] {
+#addBookForm input[type="text"],
+input[type="number"] {
     border: 2px solid rgba(0, 0, 0, 0.8);
     border-radius: 0.5rem;
     padding: 8px 12px;
@@ -203,7 +216,7 @@ body {
     font-weight: 500;
 }
 
-#addBookForm>button[type="submit"] {
+#addBookForm > button[type="submit"] {
     margin-top: 1.5rem;
     border: none;
     padding: 1rem 1.5rem;
@@ -214,6 +227,6 @@ body {
     cursor: pointer;
 }
 
-#addBookForm>button[type="submit"]:hover {
+#addBookForm > button[type="submit"]:hover {
     background-color: hsl(206, 68%, 74%);
 }

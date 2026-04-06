@@ -110,7 +110,7 @@ class Book {
 //     }
 
 // OLD CODE
-//     id = crypto.randomUUID();
+//     this.id = crypto.randomUUID();
 //     this.title = title;
 //     this.author = author;
 //     this.pages = pages;
